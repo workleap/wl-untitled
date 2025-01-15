@@ -2,6 +2,7 @@ import { allTokens } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
 import getSectionLinks from "@/app/lib/getSectionLinks.ts";
+import { getTokensSlugs } from "@/app/lib/getSlugs";
 import { BasePageLayout } from "@/app/ui/layout/basePageLayout/BasePageLayout";
 import Mdx from "@/components/mdx/Mdx.tsx";
 
@@ -37,9 +38,7 @@ export default function TokenPage({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-    return allTokens.map(({ section, slug }) => ({
-        slug: [section, slug]
-    }));
+    return getTokensSlugs();
 }
 
 // The sections are Overview, Semantic and Core. we want all title in "Core" to be "Core " + "Color"(the token type) + " Tokens"

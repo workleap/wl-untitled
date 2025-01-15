@@ -1,2 +1,4 @@
 User-Agent: *
 Disallow:
+
+Sitemap: https://hopper.workleap.design/sitemap.xml

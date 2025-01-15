@@ -1,6 +1,7 @@
 import { allComponents } from "@/.contentlayer/generated";
 import { getComponentDetails } from "@/app/lib/getComponentDetails.ts";
 import getSectionLinks from "@/app/lib/getSectionLinks.ts";
+import { getComponentsSlugs } from "@/app/lib/getSlugs";
 import Heading from "@/app/ui/components/heading/Heading.tsx";
 import { BasePageLayout } from "@/app/ui/layout/basePageLayout/BasePageLayout";
 import { notFound } from "next/navigation";
@@ -95,9 +96,5 @@ export async function generateMetadata({ params }: PageProps) {
 
 
 export async function generateStaticParams() {
-    return allComponents.map(({ slug }) => {
-        return ({
-            slug: [slug]
-        });
-    });
+    return getComponentsSlugs();
 }

@@ -1,4 +1,5 @@
 import getSectionLinks from "@/app/lib/getSectionLinks.ts";
+import { getGettingStartedSlugs } from "@/app/lib/getSlugs";
 import { BasePageLayout } from "@/app/ui/layout/basePageLayout/BasePageLayout";
 import Mdx from "@/components/mdx/Mdx.tsx";
 import Title from "@/components/title/Title";
@@ -39,9 +40,7 @@ export default function GettingStartedPage({ params }: PageProps) {
 
 
 export async function generateStaticParams() {
-    return allGettingStarteds.map(({ section, slug }) => ({
-        slug: [section, slug]
-    }));
+    return getGettingStartedSlugs();
 }
 
 export async function generateMetadata({ params }: PageProps) {

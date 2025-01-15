@@ -1,4 +1,5 @@
 import getSectionLinks from "@/app/lib/getSectionLinks.ts";
+import { getIconsSlugs } from "@/app/lib/getSlugs";
 import { BasePageLayout } from "@/app/ui/layout/basePageLayout/BasePageLayout";
 import Mdx from "@/components/mdx/Mdx.tsx";
 import Title from "@/components/title/Title";
@@ -38,9 +39,7 @@ export default function IconPage({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-    return allIcons.map(({ section, slug }) => ({
-        slug: [section, slug]
-    }));
+    return getIconsSlugs();
 }
 
 export async function generateMetadata({ params }: PageProps) {
